@@ -6,7 +6,7 @@ SOURCES=icestick_top.v zpu_core.v zpu_core_rom.v internal_ram.v
 BLIF=$(PROJECT_NAME).blif
 BT=$(PROJECT_NAME).bt
 BIN=$(PROJECT_NAME).bin
-PCF=$(PROJECT_NAME).PCF
+PCF=icestick.pcf
 
 
 YOSYS=../yosys/yosys

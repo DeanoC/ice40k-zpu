@@ -70,10 +70,7 @@ module top(
 		.dout(data_read),
 	);
 
-	always @(posedge ICE_CLK)
-	begin
-		mem_done <= 1; // 1 cycle ram
-	end
+	assign mem_done = 1'b1; // 1 cycle ram
 
 	zpu_core cpu(
 		.clk(ICE_CLK),
