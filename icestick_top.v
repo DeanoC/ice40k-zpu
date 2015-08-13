@@ -39,7 +39,7 @@ module top(
 	output LED1,
 	output LED2,
 	output LED3,
-	output LED4,
+	output LED4
 
 //	output IRDA_TXD,
 //	input  IRDA_RXD,
@@ -68,6 +68,7 @@ module top(
 		.write_en(write_en),
 		.din(data_write),
 		.dout(data_read),
+
 	);
 
 	assign mem_done = 1'b1; // 1 cycle ram
@@ -80,7 +81,14 @@ module top(
 		.mem_done(mem_done),
 		.mem_addr(addr),
 		.mem_data_read(data_read),
-		.mem_data_write(data_write)
+		.mem_data_write(data_write),
+`ifdef ENABLE_CPU_INTERRUPTS
+		.interrupt     (),
+`endif
+`ifdef ENABLE_BYTE_SELECT
+  		.byte_select()
+`endif
+
 	);
 
 	assign {LED0, LED1, LED2, LED3, LED4 } = addr[6:2];

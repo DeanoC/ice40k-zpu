@@ -14,6 +14,8 @@ ARACHE=../arachne-pnr/bin/arachne-pnr
 ICEPACK=../icestorm/icepack/icepack
 ICEPROG=../icestorm/iceprog/iceprog
 
+VERILATOR=../verilator/bin/verilator
+
 $(BIN): $(BT)
 	$(ICEPACK) $(BT) $(BIN) >> $(PROJECT_NAME).log
 
@@ -23,6 +25,8 @@ $(BT): $(BLIF) $(PCF)
 $(BLIF): $(SOURCES)
 	$(YOSYS) -p "synth_ice40 -top top -blif $(BLIF)" $(SOURCES) > $(PROJECT_NAME).log
 
+debug: $(SOURCES)
+	$(VERILATOR) -cc $(SOURCES) -Mdir build
 clean:
 	rm $(BLIF) $(BT) $(BIN) $(PROJECT_NAME).log
 
