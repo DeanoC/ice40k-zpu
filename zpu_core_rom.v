@@ -52,7 +52,7 @@ always @(posedge clk) data <= memory[addr];
 integer n;
 initial begin
 // initialize all memory array
-for(n = 0; n < (1<<`MC_MEM_BITS); n = n + 1) memory[n] <= 0;
+//for(n = 0; n < (1<<`MC_MEM_BITS); n = n + 1) memory[n] <= 0;
 
 // ------------------------- MICROCODE MEMORY START -----------------------------------
 
